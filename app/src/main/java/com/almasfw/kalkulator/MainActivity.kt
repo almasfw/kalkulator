@@ -6,7 +6,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var answer = 0.0F
+    private var answer: Float = 0.0F
     private lateinit var angka: String
     private var boolAdd = false
     private var boolSub = false
@@ -84,52 +84,60 @@ class MainActivity : AppCompatActivity() {
         }
 
         add.setOnClickListener() {
-            answer = formAngka.text.toString().toFloat()
+            calculate()
             boolAdd = true
-            formAngka.text = ""
+            clear()
         }
 
         sub.setOnClickListener() {
-            answer = formAngka.text.toString().toFloat()
+            calculate()
             boolSub = true
-            formAngka.text = ""
+            clear()
         }
 
         mul.setOnClickListener() {
-            answer = formAngka.text.toString().toFloat()
+            calculate()
             boolMul = true
-            formAngka.text = ""
+            clear()
         }
 
         div.setOnClickListener() {
-            answer = formAngka.text.toString().toFloat()
+            calculate()
             boolDiv = true
-            formAngka.text = ""
+            clear()
         }
 
         equal.setOnClickListener() {
-            if (boolAdd) {
-                answer += formAngka.text.toString().toFloat()
-                formAngka.text = answer.toString()
-                boolAdd = false
-            } else if (boolSub) {
-                answer -= formAngka.text.toString().toFloat()
-                formAngka.text = answer.toString()
-                boolSub = false
-            } else if (boolMul) {
-                answer *= formAngka.text.toString().toFloat()
-                formAngka.text = answer.toString()
-                boolMul = false
-            } else if (boolDiv) {
-                answer /= formAngka.text.toString().toFloat()
-                formAngka.text = answer.toString()
-                boolDiv = false
-            }
+            calculate()
+            formAngka.text = answer.toString()
         }
 
         clear.setOnClickListener() {
             answer = 0.0F
             formAngka.text = ""
+            clear()
         }
+    }
+
+    private fun calculate() {
+        if (boolAdd) {
+            answer += formAngka.text.toString().toFloat()
+            boolAdd = false
+        } else if (boolSub) {
+            answer -= formAngka.text.toString().toFloat()
+            boolSub = false
+        } else if (boolMul) {
+            answer *= formAngka.text.toString().toFloat()
+            boolMul = false
+        } else if (boolDiv) {
+            answer /= formAngka.text.toString().toFloat()
+            boolDiv = false
+        } else {
+            answer = formAngka.text.toString().toFloat()
+        }
+    }
+
+    private fun clear() {
+        formAngka.text = ""
     }
 }
