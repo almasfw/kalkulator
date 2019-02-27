@@ -212,14 +212,14 @@
         app:layout_constraintTop_toTopOf="@id/guidelineBottom3" />
 
     <Button
-        android:id="@+id/add"
+        android:id="@+id/sub"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/button_operator"
-        android:text="@string/add"
+        android:text="@string/sub"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="35sp"
+        android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="@id/guidelineBottom3"
         app:layout_constraintLeft_toLeftOf="@id/guidelineRight"
         app:layout_constraintRight_toRightOf="@id/guidelineRight"
@@ -268,18 +268,19 @@
         app:layout_constraintTop_toTopOf="@id/guidelineBottom2" />
 
     <Button
-        android:id="@+id/sub"
+        android:id="@+id/add"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/button_operator"
-        android:text="@string/sub"
+        android:text="@string/add"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="50sp"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@id/guidelineBottom2"
         app:layout_constraintLeft_toLeftOf="@id/guidelineRight"
         app:layout_constraintRight_toRightOf="@id/guidelineRight"
         app:layout_constraintTop_toTopOf="@id/guidelineBottom2" />
+
 
     <Button
         android:id="@+id/button0"
