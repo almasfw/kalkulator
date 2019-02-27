@@ -2,13 +2,16 @@ package com.almasfw.kalkulator
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.almasfw.kalkulator.R.id
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var answer = ""
-    var angka: String
+    private var answer = 0.0F
+    private lateinit var angka: String
+    private var boolAdd = false
+    private var boolSub = false
+    private var boolMul = false
+    private var boolDiv = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,24 +77,59 @@ class MainActivity : AppCompatActivity() {
             formAngka.text = angka
         }
 
-        //add.setOnClickListener(){
+        point.setOnClickListener() {
+            angka = formAngka.text.toString()
+            angka += "."
+            formAngka.text = angka
+        }
 
-        //}
-    }
+        add.setOnClickListener() {
+            answer = formAngka.text.toString().toFloat()
+            boolAdd = true
+            formAngka.text = ""
+        }
 
-    private fun add(a: Float, b: Float): Float {
-        return a + b
-    }
+        sub.setOnClickListener() {
+            answer = formAngka.text.toString().toFloat()
+            boolSub = true
+            formAngka.text = ""
+        }
 
-    private fun sub(a: Float, b: Float): Float {
-        return a - b
-    }
+        mul.setOnClickListener() {
+            answer = formAngka.text.toString().toFloat()
+            boolMul = true
+            formAngka.text = ""
+        }
 
-    private fun mul(a: Float, b: Float): Float {
-        return a * b
-    }
+        div.setOnClickListener() {
+            answer = formAngka.text.toString().toFloat()
+            boolDiv = true
+            formAngka.text = ""
+        }
 
-    private fun div(a: Float, b: Float): Float {
-        return a / b
+        equal.setOnClickListener() {
+            if (boolAdd) {
+                answer += formAngka.text.toString().toFloat()
+                formAngka.text = answer.toString()
+                boolAdd = false
+            } else if (boolSub) {
+                answer -= formAngka.text.toString().toFloat()
+                formAngka.text = answer.toString()
+                boolSub = false
+            } else if (boolMul) {
+                answer *= formAngka.text.toString().toFloat()
+                formAngka.text = answer.toString()
+                boolMul = false
+            } else if (boolDiv) {
+                answer /= formAngka.text.toString().toFloat()
+                formAngka.text = answer.toString()
+                boolDiv = false
+            }
+        }
+
+        clear.setOnClickListener() {
+            answer = 0.0F
+            formAngka.text = ""
+        }
     }
 }

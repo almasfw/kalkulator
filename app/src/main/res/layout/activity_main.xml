@@ -100,7 +100,7 @@
         app:layout_constraintTop_toTopOf="@id/guidelineBottom5" />
 
     <Button
-        android:id="@+id/divide"
+        android:id="@+id/div"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/button_operator"
