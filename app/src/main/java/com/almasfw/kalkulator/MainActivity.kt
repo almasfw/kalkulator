@@ -114,7 +114,6 @@ class MainActivity : AppCompatActivity() {
 
         clear.setOnClickListener() {
             answer = 0.0F
-            formAngka.text = ""
             clear()
         }
     }
