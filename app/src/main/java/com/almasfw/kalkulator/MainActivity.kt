@@ -2,114 +2,113 @@ package com.almasfw.kalkulator
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private var answer: Float = 0.0F
-    private lateinit var angka: String
+    private lateinit var number: String
     private var boolAdd = false
     private var boolSub = false
     private var boolMul = false
     private var boolDiv = false
+    private var boolResult = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         button0.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "0"
-            formAngka.text = angka
+            if (formAngka.text != "") {
+                buttonAction(button0)
+            }
         }
 
         button1.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "1"
-            formAngka.text = angka
+            buttonAction(button1)
         }
 
         button2.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "2"
-            formAngka.text = angka
+            buttonAction(button2)
         }
 
         button3.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "3"
-            formAngka.text = angka
+            buttonAction(button3)
         }
 
         button4.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "4"
-            formAngka.text = angka
+            buttonAction(button4)
         }
 
         button5.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "5"
-            formAngka.text = angka
+            buttonAction(button5)
         }
 
         button6.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "6"
-            formAngka.text = angka
+            buttonAction(button6)
         }
 
         button7.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "7"
-            formAngka.text = angka
+            buttonAction(button7)
         }
 
         button8.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "8"
-            formAngka.text = angka
+            buttonAction(button8)
         }
 
         button9.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "9"
-            formAngka.text = angka
+            buttonAction(button9)
         }
 
         point.setOnClickListener() {
-            angka = formAngka.text.toString()
-            angka += "."
-            formAngka.text = angka
+            if (formAngka.text == "") {
+                number = formAngka.text.toString()
+                number += R.string.zero_point
+                formAngka.text = number
+            } else {
+                buttonAction(point)
+            }
         }
 
         add.setOnClickListener() {
-            calculate()
-            boolAdd = true
-            clear()
+            if (formAngka.text != "") {
+                calculate()
+                boolAdd = true
+                clear()
+            }
         }
 
         sub.setOnClickListener() {
-            calculate()
-            boolSub = true
-            clear()
+            if (formAngka.text != "") {
+                calculate()
+                boolSub = true
+                clear()
+            }
         }
 
         mul.setOnClickListener() {
-            calculate()
-            boolMul = true
-            clear()
+            if (formAngka.text != "") {
+                calculate()
+                boolMul = true
+                clear()
+            }
         }
 
         div.setOnClickListener() {
-            calculate()
-            boolDiv = true
-            clear()
+            if (formAngka.text != "") {
+                calculate()
+                boolDiv = true
+                clear()
+            }
         }
 
         equal.setOnClickListener() {
-            calculate()
-            formAngka.text = answer.toString()
+            if (formAngka.text != "") {
+                calculate()
+                formAngka.text = answer.toString()
+                boolResult = true
+            }
         }
 
         clear.setOnClickListener() {
@@ -138,5 +137,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun clear() {
         formAngka.text = ""
+    }
+
+    private fun buttonAction(button: Button) {
+        if (boolResult) {
+            clear()
+            boolResult = false
+        }
+        number = formAngka.text.toString()
+        number += button.text.toString()
+        formAngka.text = number
     }
 }
